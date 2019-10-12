@@ -1,13 +1,17 @@
 ---
 # dependency for Ansible to work on new Ubuntu host
+
+# Python 2 support
 - name: If missing, install Python
   raw: test -e /usr/bin/python || (apt -y update && apt install -y python)
   changed_when: False
 - setup: # aka gather_facts: yes
-  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'xenial'
+  when: (ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'xenial') or
+        (ansible_distribution == 'Debian' and ansible_distribution_release == 'stretch')
 
+# Python 3
 - name: If missing, install Python3
   raw: test -e /usr/bin/python3 || (apt -y update && apt install -y python3)
   changed_when: False
 - setup: # aka gather_facts: yes
-  when: ansible_distribution == 'Ubuntu'
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
