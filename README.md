@@ -1,7 +1,7 @@
 Ansible Role: Install Python on newly bootstrapped Ubuntu host
 =========
 
-**Install Python on newly bootstrapped Ubuntu host**
+**Install Python on newly bootstrapped Ubuntu or Debian host**
 
 This Ansible role will install Python on newly bootstrapped host. This is usually
 a new host which you never even SSH-ed to.
